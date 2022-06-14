@@ -3,7 +3,8 @@ import 'package:pokemon_2/models/mational_pokemon.dart';
 import 'package:pokemon_2/models/regional_pokemon.dart';
 
 class Pokemon extends StatefulWidget {
-  const Pokemon({Key? key}) : super(key: key);
+  final List data;
+  const Pokemon(this.data, {Key? key}) : super(key: key);
 
   @override
   State<Pokemon> createState() => _PokemonState();
@@ -11,15 +12,16 @@ class Pokemon extends StatefulWidget {
 
 class _PokemonState extends State<Pokemon> {
   var _actualPage = 0;
-  final List<Widget> _actualPokedex = [
-    const NationalPokemon(),
-    const RegionalPokemon()
-  ];
+
   @override
   Widget build(BuildContext context) {
+    final List<Widget> _actualPokedex = [
+      NationalPokemon(widget.data),
+      RegionalPokemon(widget.data)
+    ];
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pokedex'),
+        title: Center(child: Text(widget.data[8])),
       ),
       body: _actualPokedex[_actualPage],
       bottomNavigationBar: BottomNavigationBar(

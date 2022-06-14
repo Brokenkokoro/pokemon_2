@@ -1,13 +1,29 @@
 import 'package:flutter/material.dart';
 
 class NationalPokemon extends StatelessWidget {
-  const NationalPokemon({Key? key}) : super(key: key);
+  final List data;
+  const NationalPokemon(this.data, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Text('National'),
+        child: Container(
+          decoration: BoxDecoration(
+              boxShadow: const [BoxShadow(offset: Offset(3, 3))],
+              border: Border.all(),
+              borderRadius: BorderRadius.circular(5.0)),
+          padding: const EdgeInsets.all(2.0),
+          margin: const EdgeInsets.all(10.0),
+          child: Column(
+            children: [
+              Expanded(child: Image.network(data[18], fit: BoxFit.fill)),
+              Container(
+                child: const Text('hola'),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
