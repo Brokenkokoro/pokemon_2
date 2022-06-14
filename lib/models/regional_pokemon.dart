@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
 class RegionalPokemon extends StatelessWidget {
-  const RegionalPokemon({Key? key}) : super(key: key);
+  final List data;
+  const RegionalPokemon(this.data, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Container(
-          child: Text('Regional'),
+          child: Text(data[5]),
         ),
       ),
     );

@@ -10,13 +10,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final Future<List>? _pokeName = Pokedata().pokemones();
+  final Future<List> _pokeName = Pokedata().pokemones();
+  final Future<List> _pokeUrl = Pokedata().pokeurl();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pokes'),
+        title: const Center(child: Text("Pokedex")),
       ),
       body: FutureBuilder(
           future: _pokeName,
@@ -31,12 +32,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     leading: Text((index + 1).toString()),
                     trailing: const Icon(Icons.catching_pokemon),
                     iconColor: Colors.red,
-                    onTap: () {
+                    onTap: () async {
+                      List _url = await _pokeUrl;
+                      List data = await Pokedata().pokedata(_url, index);
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: ((BuildContext context) =>
-                                  const Pokemon())));
+                                  Pokemon(data))));
                     },
                   );
                 },
