@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokemon_2/data/pokedata.dart';
-import 'package:pokemon_2/models/pokemon.dart';
+import 'package:pokemon_2/views/pokemon.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
